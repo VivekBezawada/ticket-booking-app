@@ -8,9 +8,12 @@ const router = express.Router();
 const errorHandler = require('../../handlers/errorHandler');
 
 const configController = require('../../controllers/configController');
+const ticketController = require('../../controllers/ticketController');
 
 router.get('/setup',configController.setup);
-
+// No Middleware is needed as I am verifying credentials from Config Collection
 router.post('/resetSeats', errorHandler.catchErrors(configController.resetAllSeats));
+
+router.get('/tickets', ticketController.getTicketsInfo);
 
 module.exports = router;
