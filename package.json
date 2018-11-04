@@ -1,0 +1,19 @@
+{
+  "name": "ticket-booking-app",
+  "version": "1.0.0",
+  "description": "Users can book tickets, check ticket statuses, update ticket details",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VivekBezawada/ticket-booking-app.git"
+  },
+  "author": "Vivek Bezawada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VivekBezawada/ticket-booking-app/issues"
+  },
+  "homepage": "https://github.com/VivekBezawada/ticket-booking-app#readme"
+}
