@@ -5,9 +5,14 @@ const mongooseHidden = require('mongoose-hidden');
 
 const configSchema = new Schema({
     seats : [{
-        type : String,
-        default : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    }]
+        type : String
+    }],
+    username : {
+        type : String
+    },
+    password : {
+        type : String
+    }
 })
 
 configSchema.plugin(timestamps);
