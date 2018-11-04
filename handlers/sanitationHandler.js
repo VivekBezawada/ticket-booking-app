@@ -7,6 +7,16 @@ exports.verifyConfigData = (data) => {
     return validateObject(configData);
 }
 
+exports.verifyUserData = (data) => {
+    const userData = {
+        name        :   data.name || '',
+        age         :   data.age || '',
+        gender      :   data.gender || ''
+    }
+
+    return validateObject(userData);
+}
+
 validateObject = (object) => {
     let emptyData = false;
     Object.entries(object).forEach(

@@ -15,6 +15,10 @@ const bookingSchema = new Schema({
     user : {
         type : Schema.Types.ObjectId,
         ref : 'User'
+    },
+    isActiveBooking : {
+        type : Boolean,
+        default : 1
     }
 })
 
