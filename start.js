@@ -9,6 +9,8 @@ mongoose.connection.on('error',(err) => {
 
 // Importing all models
 require('./models/Config');
+require('./models/Booking');
+require('./models/User');
 
 const app = require('./application');
 
