@@ -15,5 +15,6 @@ router.get('/setup',configController.setup);
 router.post('/resetSeats', errorHandler.catchErrors(configController.resetAllSeats));
 
 router.get('/tickets', ticketController.getTicketsInfo);
+router.get('/ticket/:ticketNumber', ticketController.getTicketStatus);
 
 module.exports = router;

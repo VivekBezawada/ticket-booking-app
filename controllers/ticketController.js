@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const configModel = mongoose.model('Config');
 const responseHandler = require('../handlers/responseHandler');
+const TICKET_STATES = ['open','closed'];
 
 exports.getTicketsInfo = async (req,res) => {
     const configData = await configModel.findOne({});
@@ -31,7 +32,36 @@ exports.getTicketsInfo = async (req,res) => {
         message = 'There are no open tickets';
     }
 
-    const ticketsInfo = req.query.ticketType == 'closed'?closedTickets:openTickets;
+    const ticketsInfo = req.query.ticketType == TICKET_STATES[1]?closedTickets:openTickets;
 
     return responseHandler.getResponse(200,message,ticketsInfo,res);
+}
+
+exports.getTicketStatus = async (req,res) => {
+    const ticketNumber = req.params.ticketNumber;
+    if(!ticketNumber) {
+        return responseHandler.getResponse(200, 'Please provide a ticket number',null,res);
+    }
+
+    if(ticketNumber < 1 || ticketNumber > 40) {
+        return responseHandler.getResponse(200, 'Enter a valid ticket number',null,res);
+    }
+
+    const configData = await configModel.findOne({});
+
+    if(!configData) {
+        return responseHandler.getResponse(500, 'Unable to fetch config data',null,res);
+    }
+
+    const ticketStatus = configData.seats[ticketNumber-1] == 0? TICKET_STATES[0] : TICKET_STATES[1];
+
+    if(req.query.getDetails) {
+        if(ticketStatus == TICKET_STATES[0]) {
+            return responseHandler.getResponse(200,'There is no person associated with this ticket number',null,res);
+        } else {
+            // TODO : Add Users Models and get User Details
+        }
+    }
+
+    return responseHandler.getResponse(200,'Successfully retrieved ticket status',{status:ticketStatus},res);
 }
