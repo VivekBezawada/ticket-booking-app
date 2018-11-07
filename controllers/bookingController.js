@@ -8,10 +8,6 @@ const responseHandler = require('../handlers/responseHandler');
 const utilitiesHandler = require('../handlers/utilitiesHandler');
 const randomstring = require("randomstring");
 
-exports.getTicketStatus = async (req,res) => {
-
-}
-
 exports.updateTicket = async (req,res) => {
     const ticketNumber = req.params.ticketNumber;
     if(!ticketNumber) {

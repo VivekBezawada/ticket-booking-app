@@ -18,7 +18,6 @@ router.post('/resetSeats', errorHandler.catchErrors(configController.resetAllSea
 router.get('/tickets', ticketController.getTicketsInfo);
 router.get('/ticket/:ticketNumber', ticketController.getTicketStatus);
 
-router.post('/ticket/status', errorHandler.catchErrors(bookingController.getTicketStatus));
 router.put('/ticket/:ticketNumber',errorHandler.catchErrors(bookingController.updateTicket));
 
 module.exports = router;
