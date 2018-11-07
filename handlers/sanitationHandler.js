@@ -22,7 +22,6 @@ validateObject = (object) => {
     Object.entries(object).forEach(
         ([key,value]) => {
             if(value == '') {
-                console.log(key);
                 emptyData = true;
                 return;
             }
