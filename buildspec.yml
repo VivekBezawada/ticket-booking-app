@@ -3,7 +3,7 @@ version: 0.2
 
 env:
   variables:
-    "TOTAL_NUMBER_OF_SEATS":"40"
+    TOTAL_NUMBER_OF_SEATS:"40"
   parameter-store:
 phases:
   install:
