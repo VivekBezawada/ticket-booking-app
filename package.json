@@ -4,7 +4,8 @@
   "description": "Users can book tickets, check ticket statuses, update ticket details",
   "main": "index.js",
   "scripts": {
-    "test": "npm test.js"
+    "test": "npm test.js",
+    "start" : "node start.js"
   },
   "repository": {
     "type": "git",
