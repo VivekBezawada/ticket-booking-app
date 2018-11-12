@@ -5,5 +5,5 @@ let statuses = {
 }
 
 exports.getResponse = (status,message,result,res) => {
-    return res.status(status).json({status :statuses[status] || '',message : message || '',result : result || []});
+    return res.status(status).json({status :statuses[status] || '',message : message || '',result : result || null});
 }

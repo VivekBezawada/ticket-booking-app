@@ -22,7 +22,7 @@ A request is named based on the funcionality of the API
 
 # Testing
 - Unit Tests are written for handlers
-- Integration tests are written for controllers
+- Integration tests / End-To-End tests are written for controllers
 - Instead of using a TEST / STAGING database, Integration tests are being done in PRODUCTION database. 
 - Before Each Test, the data is cleared out.
 
