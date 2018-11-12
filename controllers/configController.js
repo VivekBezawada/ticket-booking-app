@@ -38,7 +38,7 @@ exports.resetAllSeats = async (req,res) => {
             return responseHandler.getResponse(500, 'Unable to update Config Data',null,res);
         }
 
-        return responseHandler.getResponse(200,'Successfully reset Seats in Config Data',updateConfigOcject,res);
+        return responseHandler.getResponse(200,'Successfully reset Seats in Config Data',{status:true},res);
     }
 
     return responseHandler.getResponse(500, 'Username / Password are incorrect',null,res);
