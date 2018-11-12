@@ -30,7 +30,7 @@ exports.getTicketsInfo = async (req,res) => {
     }
 
     if(!closedTickets.length) {
-        message = 'There are no open tickets';
+        message = 'There are no closed tickets';
     }
 
     const ticketsInfo = req.query.ticketType == TICKET_STATES[1]?closedTickets:openTickets;

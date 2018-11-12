@@ -2,12 +2,11 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
 chai.use(chaiHttp);
-const SERVER = 'http://localhost:8081'
 const CONSTANTS = require('../../constants').CONSTANTS;
 
 describe('Verifying APIs --> Status', function(){
     it('Returns true if application is working normally', function(done){
-        chai.request(SERVER)
+        chai.request(CONSTANTS.SERVER)
             .get('/')
             .end((err,res) => {
                 expect(err).to.be.null;
@@ -27,7 +26,7 @@ describe.skip('Verifying APIs --> Initial Setup / Reset Seats', function(){
     }
 
     it('Returns true if the seats are of length 40 and are empty', function(done){
-        chai.request(SERVER)
+        chai.request(CONSTANTS.SERVER)
             .get('/v1/setup')
             .end((err,res) => {
                 expect(err).to.be.null;
@@ -41,7 +40,7 @@ describe.skip('Verifying APIs --> Initial Setup / Reset Seats', function(){
     })
 
     it('Returns true for admin', function(done){
-        chai.request(SERVER)
+        chai.request(CONSTANTS.SERVER)
             .post('/v1/resetSeats')
             .send({'username':'admin', 'password':'admin123'})
             .end((err,res) => {
@@ -55,7 +54,7 @@ describe.skip('Verifying APIs --> Initial Setup / Reset Seats', function(){
     })
 
     it('Returns false for non-admin', function(done){
-        chai.request(SERVER)
+        chai.request(CONSTANTS.SERVER)
             .post('/v1/resetSeats')
             .send({'username':'admin', 'password':'admin1234'})
             .end((err,res) => {
