@@ -33,8 +33,7 @@ exports.resetAllSeats = async (req,res) => {
     }
 
     if(configData.username == req.body.username && configData.password == req.body.password ) {
-        const updateConfigOcject = await configModel.findOneAndUpdate({},utilitiesHandler.resetSeats());
-
+        const updateConfigOcject = await configModel.update({},{$set:{seats:utilitiesHandler.resetSeats()}});
         if(!updateConfigOcject) {
             return responseHandler.getResponse(500, 'Unable to update Config Data',null,res);
         }
