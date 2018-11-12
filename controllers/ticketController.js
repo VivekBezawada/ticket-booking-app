@@ -44,39 +44,39 @@ exports.getTicketStatus = async (req,res) => {
         return responseHandler.getResponse(200, 'Please provide a ticket number',null,res);
     }
 
-    if(ticketNumber < 1 || ticketNumber > 40) {
+    if(ticketNumber >= 1 && ticketNumber <= 40) {
+        const configData = await configModel.findOne({});
+
+        if(!configData) {
+            return responseHandler.getResponse(500, 'Unable to fetch config data',null,res);
+        }
+
+        const ticketStatus = configData.seats[ticketNumber-1] == 0? TICKET_STATES[0] : TICKET_STATES[1];
+
+        if(req.query.getDetails) {
+            if(ticketStatus == TICKET_STATES[0]) {
+                return responseHandler.getResponse(200,'There is no person associated with this ticket number',null,res);
+            } else {
+                const bookingData = await bookingModel.findById(configData.seats[ticketNumber-1]).populate('user');
+
+                if(!bookingData) {
+                    return responseHandler.getResponse(500, 'Unable to fetch user data',null,res);
+                }
+
+                const userData = {
+                    'name'  :   bookingData.user.name,
+                    'age'  :   bookingData.user.age,
+                    'gender'  :   bookingData.user.gender,
+                    'ticketNumber' : ticketNumber,
+                    'pnr' : bookingData.pnr
+                }
+
+                return responseHandler.getResponse(200,'Successfully retrieved ticket status',userData,res);
+            }
+        } 
+
+        return responseHandler.getResponse(200,'Successfully retrieved ticket status',{status:ticketStatus},res);
+    } else {
         return responseHandler.getResponse(200, 'Enter a valid ticket number',null,res);
     }
-
-    const configData = await configModel.findOne({});
-
-    if(!configData) {
-        return responseHandler.getResponse(500, 'Unable to fetch config data',null,res);
-    }
-
-    const ticketStatus = configData.seats[ticketNumber-1] == 0? TICKET_STATES[0] : TICKET_STATES[1];
-
-    if(req.query.getDetails) {
-        if(ticketStatus == TICKET_STATES[0]) {
-            return responseHandler.getResponse(200,'There is no person associated with this ticket number',null,res);
-        } else {
-            const bookingData = await bookingModel.findById(configData.seats[ticketNumber-1]).populate('user');
-
-            if(!bookingData) {
-                return responseHandler.getResponse(500, 'Unable to fetch user data',null,res);
-            }
-
-            const userData = {
-                'name'  :   bookingData.user.name,
-                'age'  :   bookingData.user.age,
-                'gender'  :   bookingData.user.gender,
-                'ticketNumber' : ticketNumber,
-                'pnr' : bookingData.pnr
-            }
-
-            return responseHandler.getResponse(200,'Successfully retrieved ticket status',userData,res);
-        }
-    } 
-
-    return responseHandler.getResponse(200,'Successfully retrieved ticket status',{status:ticketStatus},res);
 }
