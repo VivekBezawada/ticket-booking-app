@@ -4,6 +4,7 @@ Users can book tickets, check ticket statuses, update ticket details
 
 # Postman Collection
 Postman Collection can be found in the project itself. It is named "postmanCollection.json"
+A request is named based on the funcionality of the API
 
 # Assumptions
 - User can track using Seat Number
@@ -20,7 +21,10 @@ Postman Collection can be found in the project itself. It is named "postmanColle
 - tests -> As per the project structure, tests are written in their respective directories.
 
 # Testing
-- 
+- Unit Tests are written for handlers
+- Integration tests are written for controllers
+- Instead of using a TEST / STAGING database, Integration tests are being done in PRODUCTION database. 
+- Before Each Test, the data is cleared out.
 
 # CI / CD
 - A buildspec.yml file is written for the AWS Code Build
