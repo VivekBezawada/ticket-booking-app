@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "ec7c6143-0935-41e9-b532-e17f1ec2f685",
+		"name": "Ticket Booking APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "App Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://prod-api-booking-app.us-west-2.elasticbeanstalk.com/",
+					"protocol": "http",
+					"host": [
+						"prod-api-booking-app",
+						"us-west-2",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Setup First Time - Do not use this API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://prod-api-booking-app.us-west-2.elasticbeanstalk.com/v1/setup",
+					"protocol": "http",
+					"host": [
+						"prod-api-booking-app",
+						"us-west-2",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"v1",
+						"setup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Seats For Admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\" : \"admin\",\n\t\"password\" : \"admin123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/resetSeats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"resetSeats"
+					]
+				},
+				"description": "Uses a basic login"
+			},
+			"response": []
+		},
+		{
+			"name": "Open Tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://prod-api-booking-app.us-west-2.elasticbeanstalk.com/v1/tickets",
+					"protocol": "http",
+					"host": [
+						"prod-api-booking-app",
+						"us-west-2",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"v1",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Closed Tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://prod-api-booking-app.us-west-2.elasticbeanstalk.com/v1/tickets?ticketType=closed",
+					"protocol": "http",
+					"host": [
+						"prod-api-booking-app",
+						"us-west-2",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"v1",
+						"tickets"
+					],
+					"query": [
+						{
+							"key": "ticketType",
+							"value": "closed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ticket Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{server}}/v1/ticket/1",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"v1",
+						"ticket",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Details of a Ticket",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{server}}/v1/ticket/1?getDetails=true",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"v1",
+						"ticket",
+						"1"
+					],
+					"query": [
+						{
+							"key": "getDetails",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update Ticket",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"vivek\",\n\t\"age\" : 23,\n\t\"gender\" : \"male\"\n}"
+				},
+				"url": {
+					"raw": "http://prod-api-booking-app.us-west-2.elasticbeanstalk.com/v1/ticket/10",
+					"protocol": "http",
+					"host": [
+						"prod-api-booking-app",
+						"us-west-2",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"v1",
+						"ticket",
+						"10"
+					]
+				},
+				"description": "Toggles between open or closed. When it is closed, the booking is made and updated accordingly"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b13abc16-33f4-4ec7-975d-64ed7dc01cfa",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a65816a8-207f-4b62-bf45-093348ca02fc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "fbbd40b7-4eac-4af0-a117-5a7e2463f0ae",
+			"key": "server",
+			"value": "http://localhost:8081/",
+			"type": "string"
+		}
+	]
+}
