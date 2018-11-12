@@ -8,7 +8,7 @@ A request is named based on the funcionality of the API
 
 # Assumptions
 - User can track using Seat Number
-- Simple Authentication - String matching from Config Database
+- Simple Authentication - String matching from Config Database - Not using Passport or any other service
 - Since there are very few routes, everything is kept in a single file rather than in different directories
 
 # Structure
@@ -23,8 +23,7 @@ A request is named based on the funcionality of the API
 # Testing
 - Unit Tests are written for handlers
 - Integration tests / End-To-End tests are written for controllers
-- Instead of using a TEST / STAGING database, Integration tests are being done in PRODUCTION database. 
-- Before Each Test, the data is cleared out.
+- Instead of using a TEST / STAGING database, Tests are being done in PRODUCTION database. 
 
 # CI / CD
 - A buildspec.yml file is written for the AWS Code Build
